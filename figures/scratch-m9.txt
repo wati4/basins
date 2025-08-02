@@ -1,0 +1,39 @@
+(*  production of data for random matrix figure *)
+
+
+In[1]:= << random.m
+
+In[2]:= << results-3.m
+
+In[3]:= << m9.m
+
+In[4]:= short = Select[r3, stable[m9, #]&];
+
+In[5]:= refined=  Map[{Length[#], #} &, short];
+
+In[6]:= c = Tally[refined]
+
+In[7]:= pp = pairs[c, m9];
+
+In[15]:= pr = Map[Reverse, pp]
+
+Out[15]= {{3.25201, 1.38038}, {3.08612, 2.01549}, {3.34246, 2.01556}, 
+ ...
+
+In[16]:= Min[Map[First, pr]]
+
+Out[16]= 1.60036
+
+In[17]:= Max[Map[First, pr]]
+
+Out[17]= 3.67268
+
+In[18]:= << binned.m
+
+In[19]:= binning[pr, 1.6, 3.8, 0.2]
+
+Out[19]= {{1.7, 11.3985}, {1.9, 8.92035}, {2.1, 7.82497}, {2.3, 6.17424}, 
+ 
+>    {2.5, 5.7608}, {2.7, 8.62011}, {2.9, 3.89322}, {3.1, 5.27927}, 
+ 
+>    {3.3, 1.69797}, {3.5, 2.86323}, {3.7, 3.32625}}
